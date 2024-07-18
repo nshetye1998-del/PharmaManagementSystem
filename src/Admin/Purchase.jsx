@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as XLSX from "xlsx";
 import "./Purchase.css";
 
 const Purchase = () => {
@@ -167,6 +168,24 @@ const Purchase = () => {
     getData();
   }, []);
 
+  const handleExportToExcel = () => {
+    const worksheetData = data.map((purchase) => ({
+      "Company Name": purchase.company_name,
+      Barcode: purchase.barcode,
+      Type: purchase.type,
+      Price: purchase.price,
+      Amount: purchase.amount,
+      Name: purchase.name,
+      Quantity: purchase.quantity,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Purchase Data");
+
+    XLSX.writeFile(workbook, "PurchaseData.xlsx");
+  };
+
   return (
     <section className="purchase-main">
       <div className="purchase-container">
@@ -228,46 +247,56 @@ const Purchase = () => {
               Cancel
             </button>
           )}
+          <button className="excel" onClick={handleExportToExcel}>
+            Convert to Excel
+          </button>
         </form>
       </div>
       <div className="purchase-content">
         <h3>Total Purchases: {count}</h3>
         <br></br>
-        <div className="overflow" style={{ overflowX: "auto", width: "75vw",overflowY:"auto",height:"70vh" }}>
-
-        <table className="border">
-          <thead>
-            <tr>
-              <th>Company Name</th>
-              <th>Barcode</th>
-              <th>Type</th>
-              <th>Price</th>
-              <th>Amount</th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((purchase, id) => (
-              <tr key={id}>
-                <td>{purchase.company_name}</td>
-                <td>{purchase.barcode}</td>
-                <td>{purchase.type}</td>
-                <td>{purchase.price}</td>
-                <td>{purchase.amount}</td>
-                <td>{purchase.name}</td>
-                <td>{purchase.quantity}</td>
-                <td className="buttonss">
-                  <button onClick={() => handleEdit(purchase)}>Edit</button>
-                  <button onClick={() => handleDelete(purchase._id)}>
-                    Delete
-                  </button>
-                </td>
+        <div
+          className="overflow"
+          style={{
+            overflowX: "auto",
+            width: "75vw",
+            overflowY: "auto",
+            height: "70vh",
+          }}
+        >
+          <table className="border">
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>Barcode</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((purchase, id) => (
+                <tr key={id}>
+                  <td>{purchase.company_name}</td>
+                  <td>{purchase.barcode}</td>
+                  <td>{purchase.type}</td>
+                  <td>{purchase.price}</td>
+                  <td>{purchase.amount}</td>
+                  <td>{purchase.name}</td>
+                  <td>{purchase.quantity}</td>
+                  <td className="buttonss">
+                    <button onClick={() => handleEdit(purchase)}>Edit</button>
+                    <button onClick={() => handleDelete(purchase._id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

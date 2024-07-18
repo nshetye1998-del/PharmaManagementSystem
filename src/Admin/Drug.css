@@ -107,28 +107,39 @@
   justify-content: center;
   align-items: center;
 } */
-}
-@media only screen and (min-width: 600px) and (max-width: 1024px){
-  .purchase-main {
-  .purchase-container {
-    form {
 
-      input[type="text"],
-      input[type="number"] {
-        flex: 1; /* Each input box takes equal space */
-        max-width: calc(5% - -3.5rem); /* 50% width with some gap */
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        max-height: 10px;
-      }
-        button[type="submit"] {
-          padding: 0.3rem 1rem;
-         
-      }
-  
+  .excel {
+    padding: 0.5rem 1rem;
+    background-color: #00b4db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0083b0;
+    }
   }
 }
-}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .purchase-main {
+    .purchase-container {
+      form {
+        input[type="text"],
+        input[type="number"] {
+          flex: 1; /* Each input box takes equal space */
+          max-width: calc(5% - -3.5rem); /* 50% width with some gap */
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          max-height: 10px;
+        }
+        button[type="submit"] {
+          padding: 0.3rem 1rem;
+        }
+      }
+    }
+  }
 }

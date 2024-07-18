@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Purchase.css";
+import * as XLSX from 'xlsx';
 
 const Company = () => {
   const [name, setName] = useState("");
@@ -121,8 +122,8 @@ const Company = () => {
       console.log("Company deleted successfully!", updatedData);
       alert("Company deleted successfully!");
     } catch (error) {
-      console.error("Company deleted successfully:", error.message);
-      alert("Company deleted successfully!");
+      console.error("Failed to delete company:", error.message);
+      alert("Failed to delete company. Please try again.");
     }
   };
 
@@ -130,6 +131,15 @@ const Company = () => {
     setName(company.name);
     setAddress(company.address);
     setPhone(company.phone);
+    setEditMode(true);
+    setEditId(company._id);
+  };
+
+  const handleExportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Companies");
+    XLSX.writeFile(workbook, "companies.xlsx");
   };
 
   useEffect(() => {
@@ -161,13 +171,14 @@ const Company = () => {
             placeholder="Phone"
           />
           <button type="submit">{editMode ? "Update" : "Submit"}</button>
+        <button className="excel" onClick={handleExportToExcel}>Convert to Excel</button>
+
         </form>
       </div>
       <div className="purchase-content">
-        <h3>Total Drugs: {count}</h3>
+        <h3>Total Companies: {count}</h3>
         <br></br>
         <div className="overflow" style={{ overflowX: "auto", width: "75vw",overflowY:"auto",height:"79vh" }}>
-        
           <table className="border">
             <thead>
               <tr>

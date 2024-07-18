@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import "./Purchase.css";
 import "./Drug.css";
+import * as XLSX from 'xlsx';
 
 const Drug = () => {
   const [name, setName] = useState("");
@@ -170,6 +171,13 @@ const Drug = () => {
     setEditId(drug._id);
   };
 
+  const handleExportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Drugs");
+    XLSX.writeFile(workbook, "DrugsData.xlsx");
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -260,7 +268,11 @@ const Drug = () => {
           />
           
           <button type="submit">{editMode ? "Update" : "Submit"}</button>
+          <button className="excel" onClick={handleExportToExcel}>Convert to Excel</button>
         </form>
+
+        
+
       </div>
       <div className="purchase-content" style={{ width: "100%" }}>
         <h3>Total Drugs: {count}</h3>
