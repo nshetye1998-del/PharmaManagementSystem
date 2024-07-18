@@ -1,0 +1,105 @@
+/* .addcounter-container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 72vw;
+  .buttonss {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    button{
+        width: 25%;
+    }
+  }
+  
+  
+  
+  
+  
+  .counter-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .counter-table th,
+  .counter-table td {
+    border: 1px solid #ddd;
+    
+  }
+  
+  .counter-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .counter-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .counter-table tr:hover {
+    background-color: #ddd;
+  }
+  button {
+    padding: 7px 12px;
+    background-color: #6e7bda;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+}
+ */
+.mainnn {
+  width: 1000px;
+
+  .purchase-container {
+    .addcounter-main {
+      margin: 10px 0px;
+      display: flex;
+      width: 100%;
+
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .add {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      button {
+        padding: 7px 12px;
+        background-color:#00b4db;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+    .addcounter-main input {
+      padding: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .addcounter-main button {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .addcounter-main button:hover {
+      background-color: #218838;
+    }
+  }
+}

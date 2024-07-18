@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin: 1rem 0;
+
+  & .navbar-buttons {
+    display: flex;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: linear-gradient(to bottom, #00b4db, #0083b0);
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+  }
+
+  & .component-container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,48 @@
+.purchase-main {
+
+  .border {
+    font-size: 15px;
+    border-collapse: collapse;
+    width: 100%;
+    
+      overflow-y: auto; /* Add vertical scrollbar */
+      max-height: 300px; /* Example height; adjust as needed */
+
+    tr {
+      th {
+        padding: 10px;
+        /* background-color: #6e7bda; */
+        background: linear-gradient(to bottom, #00b4db, #0083b0);
+        color: white;
+      }
+
+      td {
+        text-align: center;
+        padding: 12px;
+
+        button {
+          padding: 7px 12px;
+          background-color: #00b4db;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+.buttonss{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  gap: 1rem;
+}
+    tr:nth-child(even) {
+      background-color: #f8f7ff;
+    }
+  }
+}
+b{
+  
+}
