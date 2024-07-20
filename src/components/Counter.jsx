@@ -105,12 +105,20 @@ const Counter = () => {
     if (e.key === "Enter") {
       const item = combinedData.find((d) => d.barcode === barcodeInput);
       if (item) {
-        setItems((prevItems) => [
-          ...prevItems,
-          { ...item, quantity: item.qty || 1 },
-        ]);
-        setBarcodeInput("");
-        setError("");
+        const currentDate = new Date();
+        const expiryDate = new Date(item.expiry);
+        // console.log(item, currentDate, item.expiry);
+        // console.log(expiryDate)
+        if (currentDate > expiryDate) {
+          alert("Item has expired. Please remove from inventory.");
+        } else {
+          setItems((prevItems) => [
+            ...prevItems,
+            { ...item, quantity: item.qty || 1 },
+          ]);
+          setBarcodeInput("");
+          setError("");
+        }
       } else {
         setError("Barcode not found");
       }
@@ -336,16 +344,16 @@ const Counter = () => {
     // Send the PDF via email (Backend API call)
     const sendEmail = async () => {
       const savedItems = localStorage.getItem("savedItems");
-    if (savedItems) {
-      const parsedItems = JSON.parse(savedItems);
-      setItems(parsedItems.items);
-      setCustomerName(parsedItems.customername);
-      setCustomerEmail(parsedItems.email);
+      if (savedItems) {
+        const parsedItems = JSON.parse(savedItems);
+        setItems(parsedItems.items);
+        setCustomerName(parsedItems.customername);
+        setCustomerEmail(parsedItems.email);
 
-      // Calculate total amount on mount
-      const initialTotal = calculateTotalAmount(parsedItems.items);
-      setTotalAmount(initialTotal);
-    }
+        // Calculate total amount on mount
+        const initialTotal = calculateTotalAmount(parsedItems.items);
+        setTotalAmount(initialTotal);
+      }
       const url = "https://api-5e1h.onrender.com/pharmacy/send-invoice-email";
       console.log(email);
       console.log(items, totalAmount, totalTax, discount);
@@ -356,15 +364,15 @@ const Counter = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            customerEmail:email,
+            customerEmail: email,
             invoiceData: {
-              items
+              items,
             },
           }),
         });
 
         if (!response.ok) {
-          throw new Error("Failed to send email"); 
+          throw new Error("Failed to send email");
         }
 
         console.log("Email sent successfully");

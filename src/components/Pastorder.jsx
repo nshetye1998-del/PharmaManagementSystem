@@ -6,6 +6,7 @@ const Pastorder = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searchCriteria, setSearchCriteria] = useState("customername");
   const [searchQuery, setSearchQuery] = useState("");
 
   const fetchOrders = async () => {
@@ -34,13 +35,23 @@ const Pastorder = () => {
     fetchOrders();
   }, []);
 
+  const handleSearchCriteriaChange = (e) => {
+    setSearchCriteria(e.target.value);
+    setSearchQuery("");
+  };
+
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredOrders = orders.filter((order) =>
-    order.customername.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredOrders = orders.filter((order) => {
+    if (searchCriteria === "customername") {
+      return order.customername.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (searchCriteria === "date") {
+      return format(new Date(order.date), "yyyy-MM-dd").includes(searchQuery);
+    }
+    return true;
+  });
 
   if (loading) {
     return <p>Loading...</p>;
@@ -63,14 +74,20 @@ const Pastorder = () => {
           }}
         >
           <h2>Past Orders</h2>
-          <input
-            type="text"
-            placeholder="Search by customer name"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="search-bar"
-            style={{ padding: "0.5rem", width: "30%" }}
-          />
+          <div className="search-bar">
+            <select value={searchCriteria} onChange={handleSearchCriteriaChange}>
+              <option value="customername">Search by Customer Name</option>
+              <option value="date">Search by Date</option>
+            </select>
+            <input
+              type="text"
+              placeholder={`Enter ${searchCriteria.replace("_", " ")}`}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="search-input"
+              style={{ padding: "0.5rem", width: "30%" }}
+            />
+          </div>
         </div>
         {filteredOrders.length === 0 ? (
           <p>No past orders found.</p>
