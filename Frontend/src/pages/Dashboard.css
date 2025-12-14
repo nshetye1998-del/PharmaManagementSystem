@@ -1,0 +1,181 @@
+.dashboard-container {
+  width: 1100px;
+  margin: 0 auto;
+  /* background-color: #f4f4f4; */
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-title span {
+  font-size: 18px;
+  color: #888;
+}
+
+.dashboard-menus {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.menu-button {
+  padding: 10px 20px;
+  border: 1px solid  #00b4db;;
+  background-color: white;
+  color: #0083b0;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  border-radius: 0px;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 1rem;
+}
+
+.stat-box {
+  width: 24%;
+  background: linear-gradient(to bottom, #00b4db, #0083b0);
+  color: white;
+  padding: 12px;
+  height: 6rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-box h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.stat-value {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.recent-activities {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.tab-button.active {
+  background-color:  #00b4db;
+  color: white;
+  border-radius: 5px;
+}
+
+.activities-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  overflow-x: auto; /* Add horizontal scrollbar */
+  font-size: 12px;
+}
+
+.activities-table th,
+.activities-table td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  width: auto; /* Ensures cells expand to fit content */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Displays ellipsis (...) for overflow text */
+}
+
+.activities-table th {
+  background: linear-gradient(to bottom, #00b4db, #0083b0);
+  color: white;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.status.paid {
+  background-color: #28a745;
+}
+
+.status.due {
+  background-color: #dc3545;
+}
+
+.sell-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-sell-button,
+.sell-list-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #00b4db;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.overview-report-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #00b4db;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* Media query for 768px width */
+@media only screen and (min-width: 600px) and (max-width: 1024px){
+  .table {
+    overflow-y: auto; /* Add vertical scrollbar */
+    max-height: 300px; /* Example height; adjust as needed */
+  }
+
+  .tab-button {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+  .dashboard-container {
+    width: 100% !important;
+    margin: 0 auto;
+    /* background-color: #f4f4f4; */
+    padding: 0px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+}

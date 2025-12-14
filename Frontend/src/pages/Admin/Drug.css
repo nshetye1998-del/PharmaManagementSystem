@@ -1,0 +1,168 @@
+.purchase-main {
+  display: flex;
+  flex-direction: column;
+
+  .purchase-container {
+    display: flex;
+    flex-direction: column;
+
+    /* ++++++++++++++++++++++++++++++++++++++++ */
+    .purchase-content {
+      overflow-y: auto;
+      height: 69.5vh;
+    }
+    
+    /* Scrollbar styles */
+    .purchase-content::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    .purchase-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    .purchase-content::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    
+    .purchase-content::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    /*+++++++++++++++++++++++++++++++++++++++++++++++++  */
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2%;
+      gap: 1rem;
+
+      /* Adjusting input width */
+      input[type="text"],
+      input[type="number"] {
+        flex: 1; /* Each input box takes equal space */
+        max-width: calc(12% - -0.5rem); /* 50% width with some gap */
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      /* Styling submit button */
+      button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: #00b4db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #0083b0;
+        }
+      }
+    }
+  }
+  .border {
+    /* font-size: 10px !important; */
+    border-collapse: collapse;
+
+    tr {
+      th {
+        padding: 0.5rem !important;
+        /* background-color: #6e7bda; */
+        color: white;
+      }
+
+      td {
+        text-align: center;
+
+        button {
+          padding: 7px 12px;
+          /* background-color: #6e7bda; */
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-weight: 500;
+          cursor: pointer;
+          width: 100px;
+        }
+      }
+    }
+    .buttonss {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 92%;
+      align-items: center;
+      gap: 1rem;
+
+      tr:nth-child(even) {
+        background-color: #f8f7ff;
+      }
+    }
+  }
+  .color {
+    th {
+      background: linear-gradient(to bottom, #00b4db, #0083b0);
+    }
+  }
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .count {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+  }
+  .back-button {
+    width: 10%;
+    margin: 20px;
+    height: 30px;
+    background-color: #00b4db;
+    color: white;
+    border-radius: 5px;
+    border: none;
+  }
+  /* .mainnn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+  .excel {
+    padding: 0.5rem 1rem;
+    background-color: #00b4db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0083b0;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .purchase-main {
+    .purchase-container {
+      form {
+        input[type="text"],
+        input[type="number"] {
+          flex: 1; /* Each input box takes equal space */
+          max-width: calc(5% - -3.5rem); /* 50% width with some gap */
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          max-height: 10px;
+        }
+        button[type="submit"] {
+          padding: 0.3rem 1rem;
+        }
+      }
+    }
+  }
+}

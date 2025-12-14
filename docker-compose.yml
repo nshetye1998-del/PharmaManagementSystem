@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: pharma_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - pharma-network
+
+  backend:
+    build: ./Backend
+    container_name: pharma_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/pharmacy
+      - PORT=8000
+    depends_on:
+      - mongodb
+    networks:
+      - pharma-network
+
+  frontend:
+    build: ./Frontend
+    container_name: pharma_frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - pharma-network
+
+volumes:
+  mongo-data:
+
+networks:
+  pharma-network:
+    driver: bridge
