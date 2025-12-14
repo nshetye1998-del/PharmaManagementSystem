@@ -26,7 +26,7 @@ graph TD
     DB -->|Data| Backend
     Backend -->|JSON Response| Frontend
 
-    subgraph Docker Containers
+    subgraph Docker_Env ["Docker Containers"]
         Frontend
         Backend
         DB
