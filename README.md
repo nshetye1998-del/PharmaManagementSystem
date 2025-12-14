@@ -15,8 +15,8 @@ The application follows a standard Client-Server architecture pattern.
 graph TD
     User((User))
     Browser[Web Browser / Client]
-    Frontend[Frontend (React + Vite)]
-    Backend[Backend API (Node.js + Express)]
+    Frontend["Frontend (React + Vite)"]
+    Backend["Backend API (Node.js + Express)"]
     DB[(MongoDB Database)]
 
     User -->|Interacts| Browser
